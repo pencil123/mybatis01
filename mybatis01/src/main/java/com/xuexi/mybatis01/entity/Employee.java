@@ -11,6 +11,18 @@ public class Employee {
   private String last_name;
   private String email;
   private String gender;
+
+  public Employee() {
+    super();
+  }
+
+  public Employee(Integer id, String last_name, String email, String gender) {
+    this.id = id;
+    this.last_name = last_name;
+    this.email = email;
+    this.gender = gender;
+  }
+
   public Integer getId() {
     return id;
   }

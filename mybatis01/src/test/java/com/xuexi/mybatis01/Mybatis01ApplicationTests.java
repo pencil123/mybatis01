@@ -37,15 +37,42 @@ class Mybatis01ApplicationTests {
     openSeesion.close();
   }
 
-  @Test
   /**
    * 使用接口的方式
    */
+  @Test
   public void test01() throws  IOException{
     SqlSessionFactory sqlSessionFactory = getSessionFactory();
     SqlSession openSeesion = sqlSessionFactory.openSession();
     EmployeeMapper mapper = openSeesion.getMapper(EmployeeMapper.class);
     Employee employee = mapper.getEmpById(1);
     System.out.println(employee);
+    openSeesion.close();
   }
+
+
+
+  /**
+   * 为增删改查编写测试类
+   */
+  @Test
+  public void test02() throws IOException {
+    SqlSessionFactory sqlSessionFactory = getSessionFactory();
+    // openSession  true 自动提交
+    SqlSession openSession = sqlSessionFactory.openSession(true);
+    try{
+      EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+      Employee employee = new Employee(null,"liuwu","liuwu@admin.com","0");
+      mapper.addEmp(employee);
+
+      System.out.println(employee.getId());
+
+     // mapper.deleteEmpById(4);
+    //  openSession.commit();
+    }finally{
+      openSession.close();
+    }
+  }
+
+
 }
