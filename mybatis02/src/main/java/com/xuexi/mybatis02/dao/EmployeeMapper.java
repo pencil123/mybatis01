@@ -6,6 +6,7 @@ import com.xuexi.mybatis02.entity.Employee;
  * @author lyzhang
  * @since 2020/1/15 16:01
  */
+
 public interface EmployeeMapper {
   public Employee getEmpById (Integer id);
 
